@@ -35,6 +35,7 @@ public:
    void runForA(unsigned long delay_A, L298N::Direction direction_A, CallBackFunction callback_A);
    void stopA();
    void resetA();
+   void moveForwardBarckwardA();
    boolean isMovingA();
    L298N::Direction getDirectionA();
 
@@ -52,6 +53,7 @@ public:
    void runForB(unsigned long delay_B, L298N::Direction direction_B, CallBackFunction callback_B);
    void stopB();
    void resetB();
+   void moveForwardBarckwardB();
    boolean isMovingB();
    L298N::Direction getDirectionB();
 

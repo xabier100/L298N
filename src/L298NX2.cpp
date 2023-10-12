@@ -126,6 +126,15 @@ L298N::Direction L298NX2::getDirectionA()
   return _motorA.getDirection();
 }
 
+void L298NX2::moveForwardBarckwardA()
+{
+  this->forwardA();
+  delay(500);
+  this->backwardA();
+  delay(500);
+  this->stopA();
+}
+
 //Motor B
 void L298NX2::setSpeedB(unsigned short pwmVal)
 {
@@ -198,6 +207,15 @@ boolean L298NX2::isMovingB()
 L298N::Direction L298NX2::getDirectionB()
 {
   return _motorB.getDirection();
+}
+
+void L298NX2::moveForwardBarckwardB()
+{
+  this->forwardB();
+  delay(500);
+  this->backwardB();
+  delay(500);
+  this->stopB();
 }
 
 // Both
