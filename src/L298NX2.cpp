@@ -128,10 +128,8 @@ L298N::Direction L298NX2::getDirectionA()
 
 void L298NX2::moveForwardBarckwardA()
 {
-  this->forwardA();
-  delay(500);
-  this->backwardA();
-  delay(500);
+  this->runForA(500, L298N::FORWARD);
+  this->runForA(500, L298N::BACKWARD);
   this->stopA();
 }
 
@@ -211,10 +209,8 @@ L298N::Direction L298NX2::getDirectionB()
 
 void L298NX2::moveForwardBarckwardB()
 {
-  this->forwardB();
-  delay(500);
-  this->backwardB();
-  delay(500);
+  this->runForB(500, L298N::FORWARD);
+  this->runForB(500, L298N::BACKWARD);
   this->stopB();
 }
 
