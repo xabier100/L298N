@@ -9,8 +9,6 @@
 
 #define DEBUG 0
 
-typedef void (*CallBackFunction)();
-
 L298NX2::L298NX2(uint8_t pinEnable_A,
                  uint8_t pinIN1_A,
                  uint8_t pinIN2_A,
@@ -307,8 +305,4 @@ void L298NX2::reset()
   _canMove = true;
   _motorA.reset();
   _motorB.reset();
-}
-
-void L298NX2::fakeCallback()
-{
 }
