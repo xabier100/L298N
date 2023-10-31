@@ -114,11 +114,6 @@ void L298N::stop()
   _isMoving = false;
 }
 
-void L298N::reset()
-{
-  _canMove = true;
-}
-
 boolean L298N::isMoving()
 {
   return _isMoving;

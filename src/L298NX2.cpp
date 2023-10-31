@@ -78,25 +78,9 @@ void L298NX2::runForA(unsigned long delay_A, L298N::Direction direction_A)
   _motorA.runFor(delay_A, direction_A);
 }
 
-void L298NX2::runForA(unsigned long delay_A, L298N::Direction direction_A, CallBackFunction callback_A)
-{
-  trace("runForA(d, d, c)");
-  _motorA.runFor(delay_A, direction_A, callback_A);
-}
-
-void L298NX2::forwardForA(unsigned long delay, CallBackFunction callback)
-{
-  this->runForA(delay, L298N::FORWARD, callback);
-}
-
 void L298NX2::forwardForA(unsigned long delay)
 {
   this->runForA(delay, L298N::FORWARD);
-}
-
-void L298NX2::backwardForA(unsigned long delay, CallBackFunction callback)
-{
-  this->runForA(delay, L298N::BACKWARD, callback);
 }
 
 void L298NX2::backwardForA(unsigned long delay)
@@ -107,11 +91,6 @@ void L298NX2::backwardForA(unsigned long delay)
 void L298NX2::stopA()
 {
   _motorA.stop();
-}
-
-void L298NX2::resetA()
-{
-  _motorA.reset();
 }
 
 boolean L298NX2::isMovingA()
@@ -160,24 +139,10 @@ void L298NX2::runForB(unsigned long delay_B, L298N::Direction direction_B)
 {
   _motorB.runFor(delay_B, direction_B);
 }
-void L298NX2::runForB(unsigned long delay_B, L298N::Direction direction_B, CallBackFunction callback_B)
-{
-  _motorB.runFor(delay_B, direction_B, callback_B);
-}
-
-void L298NX2::forwardForB(unsigned long delay, CallBackFunction callback)
-{
-  this->runForB(delay, L298N::FORWARD, callback);
-}
 
 void L298NX2::forwardForB(unsigned long delay)
 {
   this->runForB(delay, L298N::FORWARD);
-}
-
-void L298NX2::backwardForB(unsigned long delay, CallBackFunction callback)
-{
-  this->runForB(delay, L298N::BACKWARD, callback);
 }
 
 void L298NX2::backwardForB(unsigned long delay)
@@ -188,11 +153,6 @@ void L298NX2::backwardForB(unsigned long delay)
 void L298NX2::stopB()
 {
   _motorB.stop();
-}
-
-void L298NX2::resetB()
-{
-  _motorB.reset();
 }
 
 boolean L298NX2::isMovingB()
@@ -237,56 +197,9 @@ void L298NX2::run(L298N::Direction direction)
   _motorB.run(direction);
 }
 
-//Timing and callback
-void L298NX2::runFor(unsigned long delay, L298N::Direction direction, CallBackFunction callback)
-{
-
-  if ((_lastMs == 0) && _canMove)
-  {
-    _lastMs = millis();
-    switch (direction)
-    {
-    case L298N::FORWARD:
-      this->forward();
-      break;
-    case L298N::BACKWARD:
-      this->backward();
-      break;
-    case L298N::STOP:
-    default:
-      this->stop();
-      break;
-    }
-  }
-
-  if (((millis() - _lastMs) > delay) && _canMove)
-  {
-    this->stop();
-    _lastMs = 0;
-    _canMove = false;
-
-    callback();
-  }
-}
-
-void L298NX2::runFor(unsigned long delay, L298N::Direction direction)
-{
-  this->runFor(delay, direction, fakeCallback);
-}
-
-void L298NX2::forwardFor(unsigned long delay, CallBackFunction callback)
-{
-  this->runFor(delay, L298N::FORWARD, callback);
-}
-
 void L298NX2::forwardFor(unsigned long delay)
 {
   this->runFor(delay, L298N::FORWARD);
-}
-
-void L298NX2::backwardFor(unsigned long delay, CallBackFunction callback)
-{
-  this->runFor(delay, L298N::BACKWARD, callback);
 }
 
 void L298NX2::backwardFor(unsigned long delay)
@@ -298,11 +211,4 @@ void L298NX2::stop()
 {
   _motorA.stop();
   _motorB.stop();
-}
-
-void L298NX2::reset()
-{
-  _canMove = true;
-  _motorA.reset();
-  _motorB.reset();
 }
