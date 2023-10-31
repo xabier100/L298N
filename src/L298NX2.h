@@ -49,7 +49,7 @@ public:
    void runB(L298N::Direction direction_B);
    void runForB(unsigned long delay_B, L298N::Direction direction_B);
    void stopB();
-   void moveForwardBarckwardForB(unsigned long delay_B);//TODO
+   void moveForwardBarckwardForB(unsigned long delay_B);
    boolean isMovingB();
    L298N::Direction getDirectionB();
 
@@ -62,7 +62,7 @@ public:
    void backward();
    void backwardFor(unsigned long delay);
    void run(L298N::Direction direction);
-   void runFor(unsigned long delay, L298N::Direction direction);
+   void runFor(unsigned long delay_v, L298N::Direction direction);
    void runForwardsBackwardsFor(unsigned long delay);
    void stop();
 

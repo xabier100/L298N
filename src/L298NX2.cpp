@@ -38,13 +38,6 @@ L298NX2::L298NX2(uint8_t pinIN1_A,
   _lastMs = 0;
 }
 
-void trace(String msg)
-{
-  if (DEBUG)
-  {
-    Serial.println(msg);
-  }
-}
 
 //Motor A
 void L298NX2::setSpeedA(unsigned short pwmVal)
@@ -190,6 +183,13 @@ void L298NX2::run(L298N::Direction direction)
 {
   _motorA.run(direction);
   _motorB.run(direction);
+}
+
+void L298NX2::runFor(unsigned long delay_v, L298N::Direction direction)
+{
+  this->run(direction);
+  delay(delay_v);
+  this->stop();
 }
 
 void L298NX2::forwardFor(unsigned long delay)
