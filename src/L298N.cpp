@@ -70,6 +70,7 @@ void L298N::backward()
 
 void L298N::run(L298N::Direction direction)
 {
+  
   switch (direction)
   {
   case BACKWARD:
@@ -84,8 +85,6 @@ void L298N::run(L298N::Direction direction)
   }
 }
 
-// Timing and callback
-
 void L298N::runFor(unsigned long wait,
                    L298N::Direction direction)
 {
@@ -94,19 +93,9 @@ void L298N::runFor(unsigned long wait,
   this->stop();
 }
 
-void L298N::forwardFor(unsigned long delay, CallBackFunction callback)
-{
-  this->runFor(delay, FORWARD, callback);
-}
-
 void L298N::forwardFor(unsigned long delay)
 {
   this->runFor(delay, FORWARD);
-}
-
-void L298N::backwardFor(unsigned long delay, CallBackFunction callback)
-{
-  this->runFor(delay, BACKWARD, callback);
 }
 
 void L298N::backwardFor(unsigned long delay)

@@ -3,7 +3,6 @@
 
 #include "Arduino.h"
 
-typedef void (*CallBackFunction)();
 
 class L298N
 {
@@ -20,14 +19,11 @@ public:
    void setSpeed(unsigned short pwmVal);
    unsigned short getSpeed();
    void forward();
-   void forwardFor(unsigned long delay, CallBackFunction callback);
    void forwardFor(unsigned long delay);
    void backward();
-   void backwardFor(unsigned long delay, CallBackFunction callback);
    void backwardFor(unsigned long delay);
    void run(L298N::Direction direction);
    void runFor(unsigned long delay, L298N::Direction direction);
-   void runFor(unsigned long delay, L298N::Direction direction, CallBackFunction callback);
    void stop();
    void reset();
    boolean isMoving();
@@ -42,7 +38,6 @@ private:
    boolean _canMove;
    boolean _isMoving;
    L298N::Direction _direction;
-   static void fakeCallback();
 };
 
 #endif
