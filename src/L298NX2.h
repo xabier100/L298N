@@ -33,7 +33,6 @@ public:
    void runA(L298N::Direction direction_A);
    void runForA(unsigned long delay_A, L298N::Direction direction_A);
    void stopA();
-   void moveForwardBarckwardA();
    void moveForwardBarckwardForA(unsigned long delay_A);//TODO
    boolean isMovingA();
    L298N::Direction getDirectionA();
@@ -50,7 +49,6 @@ public:
    void runB(L298N::Direction direction_B);
    void runForB(unsigned long delay_B, L298N::Direction direction_B);
    void stopB();
-   void moveForwardBarckwardB();
    void moveForwardBarckwardForB(unsigned long delay_B);//TODO
    boolean isMovingB();
    L298N::Direction getDirectionB();
@@ -65,6 +63,7 @@ public:
    void backwardFor(unsigned long delay);
    void run(L298N::Direction direction);
    void runFor(unsigned long delay, L298N::Direction direction);
+   void runForwardsBackwardsFor(unsigned long delay);
    void stop();
 
 private:

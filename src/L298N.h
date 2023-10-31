@@ -24,6 +24,7 @@ public:
    void backwardFor(unsigned long delay);
    void run(L298N::Direction direction);
    void runFor(unsigned long delay, L298N::Direction direction);
+   void runForwardsBackwards(unsigned long delay);
    void stop();
    boolean isMoving();
    Direction getDirection();

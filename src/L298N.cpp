@@ -93,6 +93,13 @@ void L298N::runFor(unsigned long wait,
   this->stop();
 }
 
+void L298N::runForwardsBackwards(unsigned long wait)
+{
+  this->runFor(wait, FORWARD);
+  this->runFor(wait, BACKWARD);
+  this->stop();
+}
+
 void L298N::forwardFor(unsigned long delay)
 {
   this->runFor(delay, FORWARD);

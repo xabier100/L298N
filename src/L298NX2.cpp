@@ -102,11 +102,9 @@ L298N::Direction L298NX2::getDirectionA()
   return _motorA.getDirection();
 }
 
-void L298NX2::moveForwardBarckwardA()
+void L298NX2::moveForwardBarckwardForA(unsigned long delay_A)
 {
-  this->runForA(500, L298N::FORWARD);
-  this->runForA(500, L298N::BACKWARD);
-  this->stopA();
+  _motorA.runForwardsBackwards(delay_A);
 }
 
 //Motor B
@@ -164,11 +162,9 @@ L298N::Direction L298NX2::getDirectionB()
   return _motorB.getDirection();
 }
 
-void L298NX2::moveForwardBarckwardB()
+void L298NX2::moveForwardBarckwardForB(unsigned long delay_B)
 {
-  this->runForB(500, L298N::FORWARD);
-  this->runForB(500, L298N::BACKWARD);
-  this->stopB();
+  _motorB.runForwardsBackwards(delay_B);
 }
 
 // Both
@@ -204,6 +200,13 @@ void L298NX2::forwardFor(unsigned long delay)
 void L298NX2::backwardFor(unsigned long delay)
 {
   this->runFor(delay, L298N::BACKWARD);
+}
+
+void L298NX2::runForwardsBackwardsFor(unsigned long delay_value)
+{
+  this->forwardFor(delay_value);
+  this->backwardFor(delay_value);
+  this->stop();
 }
 
 void L298NX2::stop()
