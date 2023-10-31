@@ -74,7 +74,6 @@ void L298NX2::runA(L298N::Direction direction)
 
 void L298NX2::runForA(unsigned long delay_A, L298N::Direction direction_A)
 {
-  trace("runForA(d, d)");
   _motorA.runFor(delay_A, direction_A);
 }
 
